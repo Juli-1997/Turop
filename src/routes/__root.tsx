@@ -81,10 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "StreamPay" },
+      { title: "Turop" },
       { name: "description", content: "Gestiona y paga tus suscripciones de entretenimiento" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "StreamPay" },
+      { property: "og:title", content: "Turop" },
       { property: "og:description", content: "Gestiona y paga tus suscripciones de entretenimiento" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -44,7 +44,7 @@ export function notifyDue(accounts: Account[]) {
     if (sent.includes(k)) continue;
     const d = daysLeft(a.renewal);
     new Notification(`${a.service} vence ${d <= 0 ? "hoy" : `en ${d} días`}`, {
-      body: `Plan ${a.plan} (${a.cycle}) · $${a.price.toLocaleString()} — págalo desde StreamPay.`,
+      body: `Plan ${a.plan} (${a.cycle}) · $${a.price.toLocaleString()} — págalo desde Turop.`,
     });
     sent.push(k);
   }

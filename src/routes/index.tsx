@@ -5,9 +5,9 @@ import { Account, Cycle, SERVICES, daysLeft, dueSoon, load, nextRenewal, notifyD
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "StreamPay — Todas tus suscripciones en un solo pago" },
+      { title: "Turop — Todas tus suscripciones en un solo pago" },
       { name: "description", content: "Vincula Netflix, Disney+, Prime Video y más, paga todo junto y recibe recordatorios antes del vencimiento." },
-      { property: "og:title", content: "StreamPay — Tus suscripciones en un solo lugar" },
+      { property: "og:title", content: "Turop — Tus suscripciones en un solo lugar" },
       { property: "og:description", content: "Vincula tus cuentas de entretenimiento y págalas juntas." },
     ],
   }),
@@ -64,7 +64,7 @@ function Index() {
       <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground">StreamPay</p>
+            <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground">Turop</p>
             <h1 className="font-display text-4xl sm:text-5xl">Tus suscripciones, un solo pago.</h1>
           </div>
           {perm !== "granted" && (

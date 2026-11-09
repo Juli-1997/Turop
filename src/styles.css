@@ -75,26 +75,27 @@
 }
 
 :root {
+  /* Paleta "Sunny Beach Day" de Coolors: #264653 #2a9d8f #e9c46a #f4a261 #e76f51 */
   --radius: 1rem;
-  --background: oklch(0.94 0.004 106);     /* #EDEDE9 */
-  --foreground: oklch(0.32 0.02 50);
-  --card: oklch(0.95 0.02 70);             /* #F5EBE0 */
-  --card-foreground: oklch(0.32 0.02 50);
-  --popover: oklch(0.95 0.02 70);
-  --popover-foreground: oklch(0.32 0.02 50);
-  --primary: oklch(0.45 0.035 50);
-  --primary-foreground: oklch(0.95 0.02 70);
-  --secondary: oklch(0.86 0.017 70);       /* #D6CCC2 */
-  --secondary-foreground: oklch(0.32 0.02 50);
-  --muted: oklch(0.88 0.025 60);           /* #E3D5CA */
-  --muted-foreground: oklch(0.5 0.025 50);
-  --accent: oklch(0.81 0.04 55);           /* #D5BDAF */
-  --accent-foreground: oklch(0.32 0.02 50);
-  --destructive: oklch(0.58 0.14 30);
-  --destructive-foreground: oklch(0.97 0.01 70);
-  --border: oklch(0.86 0.017 70);
-  --input: oklch(0.86 0.017 70);
-  --ring: oklch(0.45 0.035 50);
+  --background: oklch(0.96 0.03 95);       /* arena clara, derivada de #e9c46a */
+  --foreground: oklch(0.35 0.05 210);      /* #264653 */
+  --card: oklch(0.98 0.015 95);
+  --card-foreground: oklch(0.35 0.05 210);
+  --popover: oklch(0.98 0.015 95);
+  --popover-foreground: oklch(0.35 0.05 210);
+  --primary: oklch(0.62 0.1 175);          /* #2a9d8f verde agua */
+  --primary-foreground: oklch(0.98 0.015 95);
+  --secondary: oklch(0.9 0.06 175);        /* verde agua aclarado */
+  --secondary-foreground: oklch(0.35 0.05 210);
+  --muted: oklch(0.92 0.05 85);            /* amarillo sol suave, de #e9c46a */
+  --muted-foreground: oklch(0.45 0.06 200);
+  --accent: oklch(0.82 0.12 85);           /* #e9c46a amarillo sol */
+  --accent-foreground: oklch(0.35 0.05 210);
+  --destructive: oklch(0.65 0.16 35);      /* #e76f51 coral */
+  --destructive-foreground: oklch(0.98 0.015 95);
+  --border: oklch(0.88 0.04 90);
+  --input: oklch(0.88 0.04 90);
+  --ring: oklch(0.62 0.1 175);
 }
 
 .dark {
