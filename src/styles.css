@@ -77,25 +77,25 @@
 :root {
   /* Paleta "Sunny Beach Day" de Coolors: #264653 #2a9d8f #e9c46a #f4a261 #e76f51 */
   --radius: 1rem;
-  --background: oklch(0.96 0.03 95);       /* arena clara, derivada de #e9c46a */
-  --foreground: oklch(0.35 0.05 210);      /* #264653 */
-  --card: oklch(0.98 0.015 95);
+  --background: oklch(0.93 0.07 90);       /* amarillo sol suave, de #e9c46a */
+  --foreground: oklch(0.35 0.05 210);      /* #264653 azul petróleo */
+  --card: oklch(0.99 0.02 95);
   --card-foreground: oklch(0.35 0.05 210);
-  --popover: oklch(0.98 0.015 95);
+  --popover: oklch(0.99 0.02 95);
   --popover-foreground: oklch(0.35 0.05 210);
-  --primary: oklch(0.62 0.1 175);          /* #2a9d8f verde agua */
-  --primary-foreground: oklch(0.98 0.015 95);
-  --secondary: oklch(0.9 0.06 175);        /* verde agua aclarado */
+  --primary: oklch(0.62 0.11 175);         /* #2a9d8f verde agua */
+  --primary-foreground: oklch(0.99 0.02 95);
+  --secondary: oklch(0.78 0.13 55);        /* #f4a261 naranja arena */
   --secondary-foreground: oklch(0.35 0.05 210);
-  --muted: oklch(0.92 0.05 85);            /* amarillo sol suave, de #e9c46a */
-  --muted-foreground: oklch(0.45 0.06 200);
-  --accent: oklch(0.82 0.12 85);           /* #e9c46a amarillo sol */
+  --muted: oklch(0.88 0.09 85);            /* amarillo sol apagado */
+  --muted-foreground: oklch(0.42 0.06 205);
+  --accent: oklch(0.82 0.13 85);           /* #e9c46a amarillo sol */
   --accent-foreground: oklch(0.35 0.05 210);
-  --destructive: oklch(0.65 0.16 35);      /* #e76f51 coral */
-  --destructive-foreground: oklch(0.98 0.015 95);
-  --border: oklch(0.88 0.04 90);
-  --input: oklch(0.88 0.04 90);
-  --ring: oklch(0.62 0.1 175);
+  --destructive: oklch(0.65 0.17 35);      /* #e76f51 coral */
+  --destructive-foreground: oklch(0.99 0.02 95);
+  --border: oklch(0.82 0.08 80);
+  --input: oklch(0.82 0.08 80);
+  --ring: oklch(0.62 0.11 175);
 }
 
 .dark {

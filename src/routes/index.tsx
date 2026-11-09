@@ -64,7 +64,7 @@ function Index() {
       <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-display text-sm uppercase tracking-[0.3em] text-muted-foreground">Turop</p>
+            <p className="font-display text-sm uppercase tracking-[0.3em] text-destructive">Turop</p>
             <h1 className="font-display text-4xl sm:text-5xl">Tus suscripciones, un solo pago.</h1>
           </div>
           {perm !== "granted" && (
@@ -109,7 +109,7 @@ function Index() {
             );
           })}
           <button onClick={() => setForm({ ...empty })}
-            className="flex min-h-48 flex-col items-center justify-center rounded-3xl border-2 border-dashed border-foreground/25 text-muted-foreground transition hover:bg-secondary">
+            className="flex min-h-48 flex-col items-center justify-center rounded-3xl border-2 border-dashed border-primary/50 text-primary transition hover:bg-secondary/60">
             <span className="text-5xl">+</span>
             <span className="mt-2 text-sm">{accounts.length ? "Agregar otra cuenta" : "Agrega tu primera cuenta"}</span>
           </button>
