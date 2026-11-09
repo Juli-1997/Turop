@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Keep personal profiles in a private user-owned table, with validated authenticated server functions; this prevents profile reads or edits across users.
+- Share mobile navigation across account and profile screens so all four actions keep consistent destinations.

@@ -1,14 +1,24 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { MobileNav } from "@/components/mobile-nav";
+import { useAuth } from "@/lib/auth-context";
+import { UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Account, Cycle, SERVICES, daysLeft, dueSoon, load, nextRenewal, notifyDue, save } from "@/lib/accounts";
 
 export const Route = createFileRoute("/")({
+  validateSearch: (search: Record<string, unknown>): { action?: "add" | "pay" } => {
+    const action = search["action"];
+    return action === "add" || action === "pay" ? { action } : {};
+  },
   head: () => ({
     meta: [
       { title: "Turop — Todas tus suscripciones en un solo pago" },
       { name: "description", content: "Vincula Netflix, Disney+, Prime Video y más, paga todo junto y recibe recordatorios antes del vencimiento." },
       { property: "og:title", content: "Turop — Tus suscripciones en un solo lugar" },
       { property: "og:description", content: "Vincula tus cuentas de entretenimiento y págalas juntas." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,
@@ -18,12 +28,15 @@ const empty = { service: "Netflix", email: "", password: "", plan: "", cycle: "m
 const money = (n: number) => "$" + n.toLocaleString("es-CO");
 
 function Index() {
+  const { user } = useAuth();
+  const { action } = Route.useSearch();
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [form, setForm] = useState<typeof empty | null>(null);
   const [selected, setSelected] = useState<string[]>([]);
   const [paying, setPaying] = useState(false);
   const [msg, setMsg] = useState("");
   const [perm, setPerm] = useState("default");
+  useEffect(() => { if (action === "add") setForm({ ...empty }); }, [action]);
 
   useEffect(() => {
     const a = load();
@@ -56,22 +69,24 @@ function Index() {
     }, 1200);
   };
 
-  const askPerm = async () => setPerm(await Notification.requestPermission());
+  const askPerm = async () => { if (typeof Notification === "undefined") { setMsg("Este navegador no permite recordatorios."); return; } setPerm(await Notification.requestPermission()); };
+  const openPayment = () => { setSelected(accounts.map(a => a.id)); document.getElementById("payment-summary")?.scrollIntoView({ behavior: "smooth", block: "center" }); if (!accounts.length) setMsg("Vincula una cuenta antes de pagar."); };
+  useEffect(() => { if (action === "pay") { setSelected(accounts.map(a => a.id)); } }, [action, accounts]);
   const due = dueSoon(accounts);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
+      <div className="mx-auto max-w-5xl px-4 pb-28 pt-8 sm:py-12">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-display text-sm uppercase tracking-[0.3em] text-destructive">Turop</p>
             <h1 className="font-display text-4xl sm:text-5xl">Tus suscripciones, un solo pago.</h1>
           </div>
-          {perm !== "granted" && (
+          <div className="flex shrink-0 flex-wrap items-center gap-2"><Button asChild variant="outline"><Link to={user ? "/perfil" : "/auth"}><UserRound />{user ? "Mi perfil" : "Crear cuenta"}</Link></Button>{perm !== "granted" && (
             <button onClick={askPerm} className="rounded-full border border-foreground/20 px-4 py-2 text-sm hover:bg-secondary">
               🔔 Activar recordatorios
             </button>
-          )}
+          )}</div>
         </header>
 
         {due.length > 0 && (
@@ -116,7 +131,7 @@ function Index() {
         </section>
 
         {accounts.length > 0 && (
-          <div className="sticky bottom-4 mt-8 flex flex-col gap-3 rounded-3xl bg-primary p-4 text-primary-foreground sm:flex-row sm:items-center sm:justify-between">
+          <div id="payment-summary" className="sticky bottom-20 mt-8 flex flex-col gap-3 rounded-3xl bg-primary p-4 text-primary-foreground sm:bottom-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <button onClick={() => setSelected(selected.length === accounts.length ? [] : accounts.map((a) => a.id))} className="text-sm underline">
                 {selected.length === accounts.length ? "Quitar todas" : "Seleccionar todas"}
@@ -131,8 +146,9 @@ function Index() {
         )}
       </div>
 
+      <MobileNav onAdd={() => setForm({ ...empty })} onPay={openPayment} />
       {form && (
-        <div className="fixed inset-0 z-10 flex items-end justify-center bg-foreground/40 sm:items-center" onClick={() => setForm(null)}>
+        <div className="fixed inset-0 z-30 flex items-end justify-center bg-foreground/40 sm:items-center" onClick={() => setForm(null)}>
           <form onSubmit={submit} onClick={(e) => e.stopPropagation()}
             className="max-h-[92vh] w-full space-y-3 overflow-y-auto rounded-t-3xl bg-card p-6 sm:max-w-md sm:rounded-3xl">
             <h3 className="font-display text-2xl">Vincular cuenta</h3>
